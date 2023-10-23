@@ -9,8 +9,8 @@ if (process.env.NODE_ENV === "production")
 else if (process.env.NODE_ENV === "development")
   mongodb_uri = process.env.MONGODB_DEV;
 
-module.exports = {
+export default {
   port: process.env.PORT,
   secret: process.env.SECRET_TOKEN,
-  mongodb_uri
+  mongodb_uri: mongodb_uri
 };
