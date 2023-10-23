@@ -1,0 +1,217 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TicTacTrip Backend",
+    "version": "1.0.0",
+    "description": "Justify Content API with Swagger",
+    "termsOfService": "http://www.github.com/hamid-yg/tictactrip_backend",
+    "contact": {
+      "name": "",
+      "url": "",
+      "email": ""
+    }
+  },
+  "host": "localhost:5000",
+  "servers": [
+    {
+      "url": "https://tictactrip.herokuapp.com/",
+      "description": "TicTacTrip Backend"
+    }
+  ],
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "type": "bearer",
+    "name": "Authorization",
+    "in": "header",
+    "description": "Enter your bearer token in the format **Bearer &lt;token>**"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/token/": {
+      "post": {
+        "summary": "Create user",
+        "description": "Create an account for a user",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "User email",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "user@email.com"
+                }
+              }
+            }
+          },
+          {
+            "name": "content-type",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The user was created successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "example": "usertoken"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Email is not valid or empty",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Email is not valid or empty"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/justify/": {
+      "post": {
+        "summary": "Justify text in 80 columns",
+        "description": "Justify text in 80 columns and update user quota",
+        "consumes": [
+          "text/plain"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "text",
+            "in": "body",
+            "description": "Text to justify",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "content-type",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Text justified"
+          },
+          "400": {
+            "description": "Content-Type must be text/plain",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Content-Type must be text/plain"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Token is required",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Token is required"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Payment Required"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "number",
+          "example": 1
+        },
+        "email": {
+          "type": "string",
+          "example": "hamidtessilimi@gmail.com"
+        },
+        "token": {
+          "type": "string",
+          "example": "45f0ee4e-cf55-4d8a-bd5e-551a0d79655b"
+        },
+        "quota": {
+          "type": "number",
+          "example": 80000
+        },
+        "lastRequest": {
+          "type": "string",
+          "example": "12/07/1996"
+        }
+      }
+    }
+  }
+}
