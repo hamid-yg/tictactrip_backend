@@ -2,7 +2,7 @@
 
 ## DESCRIPTION
 
-> The purpose of this test is to create an API that justify a text
+> The purpose of this test is to create an API that justify a text 
 
 ## TECHNOLOGIES
 
@@ -28,4 +28,4 @@ The server will run on [http://localhost:5000](http://localhost:5000). You can h
 
 ## Deployment
 
-The project is deployed using Heroku on `https://tictactrip.heroku.com`
+The project is deployed using Heroku: [https://tictactrip-backend-920d7d508407.herokuapp.com/](https://tictactrip-backend-920d7d508407.herokuapp.com/)
