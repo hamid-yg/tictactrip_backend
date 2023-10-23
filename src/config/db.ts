@@ -9,4 +9,4 @@ export default async function connect_db() {
     } catch (err) {
         throw new Error("Cannot connect to database")
     }
-};
+}
