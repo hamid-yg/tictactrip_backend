@@ -1,12 +1,12 @@
 # ✨ TicTacTrip Backend Test
 
-## DESCRIPTION
+## Description
 
-> The purpose of this test is to create an API that justify a text 
+> The purpose of this test is to create an API that justify a text passed in paramaters into a text with 80 columns
 
-## TECHNOLOGIES
+## Technologies
 
-- `NodeJS` & `npm`
+- `NodeJS` && `npm`
 - `TypeScript`
 - `MongoDB`
 
@@ -15,6 +15,7 @@
 Clone the repository with `git clone https://github.com/hamid-yg/tictactrip_backend/`. Then,
 
 ```bash
+# install the dependencies
 npm install
 
 # set the .env appropriately
